@@ -51,17 +51,10 @@ public class Problema3 {
 	}
 
 	private Edge[] ejes;
-	private int[] nodos;
 	private Partition particion;
 
 	public Problema3 (ArrayList<Integer> nodos, ArrayList<Edge> ejes) 
 	{
-		this.nodos = new int[nodos.size()];
-
-		for (int i = 0; i < nodos.size(); i++) 
-		{
-			this.nodos[i] = i;
-		}
 		this.ejes = new Edge[ejes.size()];
 		for (int i =0 ; i< ejes.size(); i++) {this.ejes[i] = ejes.get(i);}
 		this.particion = new Partition(nodos.size());
