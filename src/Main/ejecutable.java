@@ -41,14 +41,14 @@ public class ejecutable {
 			}
 			Problema1 p1 = new Problema1(nodos);
 			boolean cumplio = p1.evaluarSeisGrados();
-			
+
 			if(cumplio) System.out.println("Se cumple la teoria de separación los de 6 grados");
 			else System.out.println("No se cumple la teoria de separación de los 6 grados");
 
 		}
 		if(problemaResolver==2) 
 		{
-			System.out.println("Marca el caso que desead comprobar: \n\t 1.No hay autoprestamos \n\t 2.Hay autoprestamos");
+			System.out.println("Marca el caso que deseas comprobar: \n\t 1.No hay autoprestamos \n\t 2.Hay autoprestamos");
 
 			ArrayList<int[]> nodos = new ArrayList<int[]>();
 			int indiceSeleccion = Integer.parseInt(reader.readLine());
@@ -69,9 +69,32 @@ public class ejecutable {
 			}
 			Problema2 p2 = new Problema2(nodos);
 			boolean cumplio = p2.cicloPrestamos();
-			
+
 			if(!cumplio) System.out.println("No hay autoprestamo");
 			else System.out.println("Hay autopretamos");
+		}
+
+		if(problemaResolver == 5)
+		{
+
+			System.out.println("Para el ejemplo creado para el ejercicio, el resultado de los ejes que necesitan ser doblevia es: ");
+			ArrayList<Integer> nodos = new ArrayList<Integer>();
+			ArrayList<Edge> ejes = new ArrayList<Edge>();
+			String contenido = "";
+			BufferedReader br = new BufferedReader( new FileReader( new File("./datosCarga/p3/p3-1.txt" )));
+			while ((contenido = br.readLine())!= null) {
+				contenido = contenido.replace("[", "");
+				contenido = contenido.replace("]", "");
+				String [] nodoNoP = contenido.split(",");
+				int inicio = Integer.parseInt(nodoNoP[0]);
+				int fin = Integer.parseInt(nodoNoP[1]);
+				double costo = Double.parseDouble(nodoNoP[2]);
+				ejes.add(new Edge(inicio, fin, costo));
+				if(!nodos.contains(inicio)) {nodos.add(inicio);}
+				if(!nodos.contains(fin)) {nodos.add(fin);}				
+			}
+			Problema3 p3 = new Problema3(nodos, ejes);
+			p3.definirCarreteras();
 		}
 	}
 
